@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "modid",
+  "version": "${version}",
+
+  "name": "Example Server Mod",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "LGPL-3.0",
+  "environment": "*",
+  "entrypoints": {
+    "server": [
+      "io.github.ivymc.example.Main"
+    ]
+  },
+  "mixins": [
+    "modid.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.10",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+  }
+}
