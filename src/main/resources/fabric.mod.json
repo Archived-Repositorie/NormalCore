@@ -1,34 +1,38 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "normalcore",
   "version": "${version}",
 
-  "name": "Example Server Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "NormalCore",
+  "description": " Semi HardCore mod ",
   "authors": [
-    "Me!"
+    "JustFoxx"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/IvyMC-Project/NormalCore",
+    "sources": "https://github.com/IvyMC-Project/NormalCore"
   },
 
   "license": "LGPL-3.0",
   "environment": "*",
   "entrypoints": {
     "server": [
-      "io.github.ivymc.example.Main"
+      "io.github.ivymc.normalcore.Main"
+    ],
+    "preLaunch": [
+      "io.github.ivymc.normalcore.PreMain"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "normalcore.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.14.10",
     "fabric-api": "*",
     "minecraft": "~1.19",
-    "java": ">=17"
+    "java": ">=17",
+    "ivycore": "*"
   },
   "suggests": {
   }
