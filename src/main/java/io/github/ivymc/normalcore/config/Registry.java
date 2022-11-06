@@ -3,10 +3,7 @@ package io.github.ivymc.normalcore.config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import io.github.ivymc.normalcore.config.punish.BaseClass;
-import io.github.ivymc.normalcore.config.punish.Command;
-import io.github.ivymc.normalcore.config.punish.SimpleClass;
-import io.github.ivymc.normalcore.config.punish.Spectator;
+import io.github.ivymc.normalcore.config.punish.*;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.IOException;
@@ -46,5 +43,7 @@ public class Registry {
         INIT.registerDeath("simple", new SimpleClass());
         INIT.registerDeath("command", new Command());
         INIT.registerDeath("spectator", new Spectator());
+        INIT.registerDeath("tempban", new TempBan());
+        INIT.registerDeath("updating_command", new UpdatingCommand());
     }
 }

@@ -14,37 +14,56 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public abstract class Updating {
+public abstract class Updating implements BaseClass {
+    private long[] useTime = {0, 0, 0};
     protected int time;
     public int update;
-    protected Message update_message;
-    protected Message death_message;
-    public static class Message {
-        public String ctx;
-        public Boolean overlay;
-        private Message(String ctx, Boolean overlay) {
-            this.ctx = ctx;
-            this.overlay = overlay;
-        }
-        public static Message parse(JsonObject json) {
-            JsonElement ctx = json.get("ctx");
-            JsonElement overlay = json.get("overlay");
-            if(ctx == null) return null;
-            if(overlay == null) return null;
-            return new Message(ctx.getAsString(),overlay.getAsBoolean());
-        }
+
+    @Override
+    public boolean accept(JsonObject json) {
+        JsonElement time = json.get("time");
+        JsonElement update = json.get("update");
+        if(time == null) return false;
+        if(update == null) return false;
+        this.time = time.getAsInt();
+        this.update = update.getAsInt();
+        return true;
     }
+
     public abstract void review(ServerPlayerEntity player);
-    public void update(ServerPlayerEntity player, boolean join) {
-        player.sendMessage(Text.Serializer.fromLenientJson(update_message.ctx), update_message.overlay);
-    }
-    public void onDeath(ServerPlayerEntity player) {
-        player.sendMessage(Text.Serializer.fromLenientJson(death_message.ctx), death_message.overlay);
+    public abstract void update(ServerPlayerEntity player, boolean join);
+
+    protected String getUseTime(ServerPlayerEntity player) {
         PlayerData data = PlayerHelper.of(player).getData();
-        data.deathEnd = new Date(new Date().getTime() + (time * 1000L));
+        String time = convertTime(getDateDiff(new Date(), data.deathEnd, TimeUnit.SECONDS));
+        return time;
+    }
+
+    protected String convertTime(long time) {
+        long days = TimeUnit.SECONDS.toDays(time);
+        long hours = TimeUnit.SECONDS.toHours(time) - TimeUnit.DAYS.toHours(days);
+        long minutes = TimeUnit.SECONDS.toMinutes(time) - TimeUnit.DAYS.toMinutes(days) - TimeUnit.HOURS.toMinutes(hours);
+        long seconds = TimeUnit.SECONDS.toSeconds(time) - TimeUnit.DAYS.toSeconds(days) - TimeUnit.HOURS.toSeconds(hours) - TimeUnit.MINUTES.toSeconds(minutes);
+        useTime[0] = days;
+        useTime[1] = hours;
+        useTime[2] = minutes;
+        String timeStr = "";
+        if (useTime[0] > 0) {
+            timeStr += String.format("%02d:%02d:%02d:%02d", days, hours, minutes, seconds);
+        } else if (useTime[1] > 0) {
+            timeStr += String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        } else if (useTime[2] > 0) {
+            timeStr += String.format("%02d:%02d", minutes, seconds);
+        } else {
+            timeStr += String.format("%02d", seconds);
+        }
+        return timeStr;
+    }
+
+    public void onDeath(ServerPlayerEntity player) {
+        PlayerData data = PlayerHelper.of(player).getData();
+        data.deathEnd = new Date(new Date().getTime() + (this.time * 1000L));
         data.death = true;
-        data = PlayerHelper.of(player).writeData(data);
-        PreMain.g.LOGGER.info(data.deathEnd.toString());
         update(player, false);
     }
 
@@ -54,7 +73,6 @@ public abstract class Updating {
     }
     public boolean isDead(ServerPlayerEntity player) {
         PlayerData data = PlayerHelper.of(player).getData();
-        PreMain.g.LOGGER.info(getDateDiff(new Date(), data.deathEnd, TimeUnit.SECONDS) + "");
-        return getDateDiff(new Date(), data.deathEnd, TimeUnit.SECONDS) <= 0;
+        return getDateDiff(new Date(), data.deathEnd, TimeUnit.SECONDS) > 0;
     }
 }
