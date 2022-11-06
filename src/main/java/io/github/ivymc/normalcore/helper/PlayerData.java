@@ -4,6 +4,5 @@ import java.util.Date;
 
 public class PlayerData {
     public Date deathEnd = new Date();
-    public Date deathStart = new Date();
     public boolean death = false;
 }

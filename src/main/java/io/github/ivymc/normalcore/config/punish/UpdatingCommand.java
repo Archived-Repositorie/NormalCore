@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class UpdatingCommand extends Updating implements BaseClass {
+public class UpdatingCommand extends Updating {
     private String update_command;
     private String review_command;
     private String death_command;

@@ -23,7 +23,7 @@ public class Registry {
     }
 
     public void readConfig() {
-        Path pathFile = FabricLoader.getInstance().getConfigDir().resolve("myfile.json");
+        Path pathFile = FabricLoader.getInstance().getConfigDir().resolve("normalcore.json");
         try {
             config = ConfigBuilder.of(pathFile.toFile(), INIT.REGISTRY).parse();
         } catch (IOException e) {
