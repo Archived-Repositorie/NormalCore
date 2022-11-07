@@ -16,7 +16,7 @@
   "license": "LGPL-3.0",
   "environment": "*",
   "entrypoints": {
-    "server": [
+    "main": [
       "io.github.ivymc.normalcore.Main"
     ],
     "preLaunch": [
