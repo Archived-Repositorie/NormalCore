@@ -21,6 +21,6 @@ public class Command implements BaseClass {
     public void onDeath(ServerPlayerEntity player) {
         var server = player.getServer();
         var commandSource = new ServerCommandSource(CommandOutput.DUMMY,player.getPos(),player.getRotationClient(), player.getWorld(),4,"", Text.of("Server"), server,player);
-        server.getCommandManager().executeWithPrefix(commandSource,String.format("execute as @p run %s", command));
+        server.getCommandManager().execute(commandSource,String.format("execute as @p run %s", command));
     }
 }
