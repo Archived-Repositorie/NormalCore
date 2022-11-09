@@ -35,14 +35,14 @@ public class UpdatingCommand extends Updating {
     public void review(ServerPlayerEntity player) {
         var server = player.getServer();
         var commandSource = new ServerCommandSource(CommandOutput.DUMMY, player.getPos(), player.getRotationClient(), player.getWorld(), 4, "", Text.of("Server"), server, player);
-        server.getCommandManager().execute(commandSource, String.format("execute as @p run %s", review_command.replaceAll("%time%",getUseTime(player))));
+        server.getCommandManager().executeWithPrefix(commandSource, String.format("execute as @p run %s", review_command.replaceAll("%time%",getUseTime(player))));
     }
 
     @Override
     public void update(ServerPlayerEntity player, boolean join) {
         var server = player.getServer();
         var commandSource = new ServerCommandSource(CommandOutput.DUMMY, player.getPos(), player.getRotationClient(), player.getWorld(), 4, "", Text.of("Server"), server, player);
-        server.getCommandManager().execute(commandSource, String.format("execute as @p run %s", update_command.replaceAll("%time%", getUseTime(player))));
+        server.getCommandManager().executeWithPrefix(commandSource, String.format("execute as @p run %s", update_command.replaceAll("%time%", getUseTime(player))));
     }
 
     @Override
@@ -50,6 +50,6 @@ public class UpdatingCommand extends Updating {
         super.onDeath(player);
         var server = player.getServer();
         var commandSource = new ServerCommandSource(CommandOutput.DUMMY, player.getPos(), player.getRotationClient(), player.getWorld(), 4, "", Text.of("Server"), server, player);
-        server.getCommandManager().execute(commandSource, String.format("execute as @p run %s", death_command.replaceAll("%time%", getUseTime(player))));
+        server.getCommandManager().executeWithPrefix(commandSource, String.format("execute as @p run %s", death_command.replaceAll("%time%", getUseTime(player))));
     }
 }
