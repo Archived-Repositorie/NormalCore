@@ -32,7 +32,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
         int stat = player.getStatHandler().getStat(Stats.CUSTOM.getOrCreateStat(Stats.DEATHS));;
         if(stat % PreMain.registry.config.lives != 0)  return;
         PreMain.registry.config.punishmentClass.onDeath(player);
-        PreMain.g.LOGGER.info(PreMain.registry.config.cancel+"");
         if(PreMain.registry.config.cancel) {
             this.dead = false;
             this.setHealth(this.getMaxHealth());
