@@ -5,6 +5,7 @@ import io.github.ivymc.normalcore.PreMain;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 public class SimpleClass implements BaseClass {
+
     @Override
     public boolean accept(JsonObject json) {
         return true;
@@ -12,6 +13,6 @@ public class SimpleClass implements BaseClass {
 
     @Override
     public void onDeath(ServerPlayerEntity player) {
-        PreMain.g.LOGGER.info("SimpleClass.onDeath");
+
     }
 }
