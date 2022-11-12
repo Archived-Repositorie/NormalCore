@@ -40,6 +40,7 @@ public class ConfigBuilder {
         public JsonObject punishment = new JsonObject();
         public int lives = 2;
         public boolean cancel = false;
+        public boolean forcedrop;
     }
 
     public Config parse() throws Exception {
@@ -48,6 +49,7 @@ public class ConfigBuilder {
         config.punishmentClass = getPunishment(json.get("punishment").getAsJsonObject());
         config.lives = json.get("lives").getAsInt();
         config.cancel = json.get("cancel").getAsBoolean();
+        config.forcedrop = json.get("forcedrop").getAsBoolean();
         return config;
     }
 

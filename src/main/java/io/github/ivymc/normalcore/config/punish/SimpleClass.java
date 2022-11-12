@@ -12,6 +12,5 @@ public class SimpleClass implements BaseClass {
 
     @Override
     public void onDeath(ServerPlayerEntity player) {
-        PreMain.g.LOGGER.info("SimpleClass.onDeath");
     }
 }
