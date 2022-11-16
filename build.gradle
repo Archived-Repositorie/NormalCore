@@ -3,7 +3,6 @@ plugins {
 	id 'maven-publish'
 }
 loom {
-	accessWidenerPath = file("src/main/resources/normalcore.accesswidener")
 	serverOnlyMinecraftJar()
 }
 
