@@ -14,7 +14,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public abstract class Updating implements BaseClass {
+public abstract class Updating extends BaseClass {
     private long[] useTime = {0, 0, 0};
     protected int time;
     public int update;
@@ -27,7 +27,7 @@ public abstract class Updating implements BaseClass {
         if(update == null) return false;
         this.time = time.getAsInt();
         this.update = update.getAsInt();
-        return true;
+        return super.accept(json);
     }
 
     public abstract void review(ServerPlayerEntity player);

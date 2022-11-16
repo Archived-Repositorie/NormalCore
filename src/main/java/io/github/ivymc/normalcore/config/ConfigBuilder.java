@@ -40,7 +40,7 @@ public class ConfigBuilder {
         public JsonObject punishment = new JsonObject();
         public int lives = 2;
         public boolean cancel = false;
-        public boolean forcedrop;
+        public boolean forcedrop = false;
     }
 
     public Config parse() throws Exception {
@@ -57,9 +57,10 @@ public class ConfigBuilder {
         if(punishment == null) throw new Exception("Punishment is null");
         String type = punishment.get("type").getAsString();
         if(type == null) throw new Exception("Punishment type is null");
+        punishment.get("afterdeath").getAsBoolean();
         BaseClass clazz = REGISTRY.get(type);
         if(clazz == null) throw new Exception("Punishment type is not registered");
-        if(!clazz.accept(punishment)) throw new Exception("Punishment type is not valid");
+        if(!clazz.accept(punishment)) throw new Exception("Punishment is not valid");
         return clazz;
     }
 }

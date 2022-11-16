@@ -2,9 +2,9 @@ plugins {
 	id 'fabric-loom' version '1.0-SNAPSHOT'
 	id 'maven-publish'
 }
-
 loom {
-  serverOnlyMinecraftJar()
+	accessWidenerPath = file("src/main/resources/normalcore.accesswidener")
+	serverOnlyMinecraftJar()
 }
 
 sourceCompatibility = JavaVersion.VERSION_17

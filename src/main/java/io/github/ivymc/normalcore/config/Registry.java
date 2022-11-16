@@ -30,6 +30,7 @@ public class Registry {
             try {
                 config.punishment = new JsonObject();
                 config.punishment.addProperty("type","simple");
+                config.punishment.addProperty("afterdeath",false);
                 Files.writeString(pathFile, GSON.toJson(config));
             } catch (IOException ioException) {
                 throw new RuntimeException(ioException);
@@ -43,6 +44,7 @@ public class Registry {
         INIT.registerDeath("simple", new SimpleClass());
         INIT.registerDeath("command", new Command());
         INIT.registerDeath("spectator", new Spectator());
+        INIT.registerDeath("random", new Random());
         INIT.registerDeath("tempban", new TempBan());
         INIT.registerDeath("updating_command", new UpdatingCommand());
     }
