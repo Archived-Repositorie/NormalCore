@@ -4,8 +4,7 @@ import com.google.gson.JsonObject;
 import io.github.ivymc.normalcore.PreMain;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public class SimpleClass implements BaseClass {
-
+public class SimpleClass extends BaseClass {
     @Override
     public boolean accept(JsonObject json) {
         return true;
@@ -13,6 +12,5 @@ public class SimpleClass implements BaseClass {
 
     @Override
     public void onDeath(ServerPlayerEntity player) {
-
     }
 }

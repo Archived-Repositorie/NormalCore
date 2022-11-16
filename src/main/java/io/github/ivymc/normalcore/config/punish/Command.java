@@ -7,14 +7,14 @@ import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
-public class Command implements BaseClass {
+public class Command extends BaseClass {
     private String command;
     @Override
     public boolean accept(JsonObject json) {
         JsonElement command = json.get("command");
         if(command == null) return false;
         this.command = command.getAsString();
-        return true;
+        return super.accept(json);
     }
 
     @Override
