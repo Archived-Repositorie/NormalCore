@@ -1,4 +1,4 @@
-package io.github.ivymc.normalcore;
+package io.github.ivymc.normalcore.normalcore;
 
 import io.github.ivymc.ivycore.Global;
 import io.github.ivymc.ivycore.config.ConfigBuilder;

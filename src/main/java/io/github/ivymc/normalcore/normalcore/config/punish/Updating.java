@@ -1,7 +1,8 @@
-package io.github.ivymc.normalcore.config.punish;
+package io.github.ivymc.normalcore.normalcore.config.punish;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import io.github.ivymc.normalcore.config.punish.BaseClass;
 import io.github.ivymc.normalcore.helper.PlayerData;
 import io.github.ivymc.normalcore.helper.PlayerHelper;
 import net.minecraft.server.network.ServerPlayerEntity;

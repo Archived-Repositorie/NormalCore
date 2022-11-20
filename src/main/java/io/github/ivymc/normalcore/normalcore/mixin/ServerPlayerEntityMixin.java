@@ -1,4 +1,4 @@
-package io.github.ivymc.normalcore.mixin;
+package io.github.ivymc.normalcore.normalcore.mixin;
 
 import com.mojang.authlib.GameProfile;
 import io.github.ivymc.normalcore.config.Configs;

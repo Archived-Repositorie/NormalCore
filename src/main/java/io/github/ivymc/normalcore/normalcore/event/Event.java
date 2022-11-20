@@ -1,4 +1,4 @@
-package io.github.ivymc.normalcore.event;
+package io.github.ivymc.normalcore.normalcore.event;
 
 import io.github.ivymc.ivycore.events.PlayerEvents;
 import io.github.ivymc.normalcore.config.Configs;

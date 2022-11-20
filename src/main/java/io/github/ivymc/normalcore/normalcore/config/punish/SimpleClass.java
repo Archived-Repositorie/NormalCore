@@ -1,6 +1,7 @@
-package io.github.ivymc.normalcore.config.punish;
+package io.github.ivymc.normalcore.normalcore.config.punish;
 
 import com.google.gson.JsonObject;
+import io.github.ivymc.normalcore.config.punish.BaseClass;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 public class SimpleClass extends BaseClass {
