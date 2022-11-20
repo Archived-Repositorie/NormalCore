@@ -9,18 +9,18 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import java.io.*;
 import java.util.HashMap;
 
-public class ConfigBuilder {
+public class ConfigBuilderOld {
     public JsonObject json;
     private static HashMap<String, BaseClass> REGISTRY;
-    private ConfigBuilder(JsonObject json) {
+    private ConfigBuilderOld(JsonObject json) {
         this.json = json;
     }
 
-    public static ConfigBuilder of(File file, HashMap<String, BaseClass> registry) throws IOException {
+    public static ConfigBuilderOld of(File file, HashMap<String, BaseClass> registry) throws IOException {
         REGISTRY = registry;
         JsonReader reader = new JsonReader(new FileReader(file));
         JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
-        return new ConfigBuilder(json);
+        return new ConfigBuilderOld(json);
     }
 
     public static class Config {

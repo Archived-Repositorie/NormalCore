@@ -45,6 +45,9 @@ public class Random extends BaseClass {
         String command_1 = String.format("execute as @p run %s",player.getX(), player.getY(), player.getZ(), command);
         var commandSource = new ServerCommandSource(CommandOutput.DUMMY,player.getPos(),player.getRotationClient(), player.getWorld(),4,"", Text.of("Server"), server,player);
         server.getCommandManager().executeWithPrefix(commandSource, command_1);
+        if(setspawnpoint) {
+            player.setSpawnPoint(player.getWorld().getRegistryKey(), player.getBlockPos(), player.getHeadYaw(), true, false);
+        }
 //        double a = center.x - maxRange;
 //        double b = center.y - maxRange;
 //        double c = center.x + maxRange;

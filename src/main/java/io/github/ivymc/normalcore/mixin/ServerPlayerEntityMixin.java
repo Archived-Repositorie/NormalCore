@@ -2,6 +2,7 @@ package io.github.ivymc.normalcore.mixin;
 
 import com.mojang.authlib.GameProfile;
 import io.github.ivymc.normalcore.PreMain;
+import io.github.ivymc.normalcore.config.Configs;
 import io.github.ivymc.normalcore.config.punish.BaseClass;
 import io.github.ivymc.normalcore.config.punish.Command;
 import net.minecraft.entity.damage.DamageSource;
@@ -34,17 +35,17 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
     @Inject(method = "onDeath", at = @At("HEAD"), cancellable = true)
     public void onDeath(DamageSource damageSource, CallbackInfo ci) {
-        if(!PreMain.registry.config.enable) return;
-        BaseClass punishmentClass = PreMain.registry.config.punishmentClass;
-        if(punishmentClass.getJson().get("afterdeath").getAsBoolean() && !PreMain.registry.config.cancel) return;
+        if(!Configs.PUNISHMENT.data.enable) return;
+        BaseClass punishmentClass = Configs.PUNISHMENT.data.punishment.baseClass;
+        if(Configs.PUNISHMENT.data.punishment.afterdeath && !Configs.PUNISHMENT.data.cancel) return;
         ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
-        if(PreMain.registry.config.forcedrop) {
+        if(Configs.PUNISHMENT.data.forcedrop) {
             player.getInventory().dropAll();
         }
         int stat = player.getStatHandler().getStat(Stats.CUSTOM.getOrCreateStat(Stats.DEATHS));
-        if(stat % PreMain.registry.config.lives != 0)  return;
+        if(stat % Configs.PUNISHMENT.data.lives != 0)  return;
         punishmentClass.onDeath(player);
-        if(PreMain.registry.config.cancel) {
+        if(Configs.PUNISHMENT.data.cancel) {
             this.dead = false;
             this.setHealth(this.getMaxHealth());
             ci.cancel();
