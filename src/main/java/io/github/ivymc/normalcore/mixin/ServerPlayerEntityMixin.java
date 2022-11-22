@@ -32,6 +32,18 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
         if(!Configs.PUNISHMENT.data.enable) return;
         BaseClass punishmentClass = Configs.PUNISHMENT.data.punishment.baseClass;
         if(Configs.PUNISHMENT.data.punishment.afterdeath && !Configs.PUNISHMENT.data.cancel) return;
+        death(ci, punishmentClass);
+    }
+
+    @Inject(method = "onDeath", at = @At("RETURN"), cancellable = true)
+    public void onAfterDeath(DamageSource damageSource, CallbackInfo ci) {
+        if(!Configs.PUNISHMENT.data.enable) return;
+        BaseClass punishmentClass = Configs.PUNISHMENT.data.punishment.baseClass;
+        if(!Configs.PUNISHMENT.data.punishment.afterdeath) return;
+        death(ci, punishmentClass);
+    }
+
+    public void death(CallbackInfo ci, BaseClass punishmentClass) {
         ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
         if(Configs.PUNISHMENT.data.forcedrop) {
             player.getInventory().dropAll();

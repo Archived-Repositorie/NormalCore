@@ -39,7 +39,7 @@ public class Random extends BaseClass {
 
     private void spread(MinecraftServer server, float spreadDistance, float maxRange, ServerPlayerEntity player) {
         String command = String.format("spreadplayers ~ ~ %s %s %b @s", spreadDistance, maxRange, false);
-        String command_1 = String.format("execute as @p run %s",player.getX(), player.getY(), player.getZ(), command);
+        String command_1 = String.format("execute as @p run %s",command);
         var commandSource = new ServerCommandSource(CommandOutput.DUMMY,player.getPos(),player.getRotationClient(), player.getWorld(),4,"", Text.of("Server"), server,player);
         server.getCommandManager().execute(commandSource, command_1);
         if(setspawnpoint) {

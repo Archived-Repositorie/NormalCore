@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public abstract class Updating extends BaseClass {
-    private long[] useTime = {0, 0, 0};
+    private final long[] useTime = {0, 0, 0};
     protected int time;
     public int update;
 
