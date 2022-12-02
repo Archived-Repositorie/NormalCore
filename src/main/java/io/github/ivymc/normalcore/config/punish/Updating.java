@@ -2,20 +2,15 @@ package io.github.ivymc.normalcore.config.punish;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import io.github.ivymc.ivycore.Global;
-import io.github.ivymc.normalcore.PreMain;
 import io.github.ivymc.normalcore.helper.PlayerData;
 import io.github.ivymc.normalcore.helper.PlayerHelper;
-import net.minecraft.server.command.TitleCommand;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public abstract class Updating extends BaseClass {
-    private long[] useTime = {0, 0, 0};
+    private final long[] useTime = {0, 0, 0};
     protected int time;
     public int update;
 

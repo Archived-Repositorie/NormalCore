@@ -2,7 +2,6 @@ package io.github.ivymc.normalcore;
 
 import io.github.ivymc.ivycore.Global;
 import io.github.ivymc.ivycore.config.ConfigBuilder;
-import io.github.ivymc.ivycore.config.ConfigKey;
 import io.github.ivymc.ivycore.registry.RegistryBuilder;
 import io.github.ivymc.normalcore.config.CommonData;
 import io.github.ivymc.normalcore.config.Configs;

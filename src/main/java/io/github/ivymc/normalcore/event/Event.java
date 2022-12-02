@@ -1,7 +1,6 @@
 package io.github.ivymc.normalcore.event;
 
 import io.github.ivymc.ivycore.events.PlayerEvents;
-import io.github.ivymc.normalcore.PreMain;
 import io.github.ivymc.normalcore.config.Configs;
 import io.github.ivymc.normalcore.config.punish.BaseClass;
 import io.github.ivymc.normalcore.config.punish.TempBan;
@@ -9,10 +8,8 @@ import io.github.ivymc.normalcore.config.punish.Updating;
 import io.github.ivymc.normalcore.helper.PlayerData;
 import io.github.ivymc.normalcore.helper.PlayerHelper;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
 
 public class Event {
     static int tick = 0;
