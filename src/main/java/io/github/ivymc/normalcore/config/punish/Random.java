@@ -30,6 +30,7 @@ public class Random extends BaseClass {
         if(spreadDistance == null) throw new Exception("spreadDistance field is null");
         if(max == null) throw new Exception("max field is null");
         if(setspawnpoint == null) throw new Exception("setspawnpoint field is null");
+        if(bedfixed == null) throw new Exception("bedfixed field is null");
         this.spreadDistance = spreadDistance.getAsInt();
         this.max = max.getAsInt();
         this.setspawnpoint = setspawnpoint.getAsBoolean();
