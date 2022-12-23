@@ -22,8 +22,7 @@ public class PunishmentData extends ConfigData {
     public static class PunishmentClass {
         public BaseClass baseClass = new BaseClass() {
             @Override
-            public boolean accept(JsonObject json) {
-                return true;
+            public void accept(JsonObject json) throws Exception {
             }
 
             @Override
@@ -41,7 +40,7 @@ public class PunishmentData extends ConfigData {
         if(type == null) throw new Exception("Punishment type is null");
         BaseClass clazz = PreMain.registry.get(RegistryTypes.PUNISHMENT, Identifier.tryParse(type));
         if(clazz == null) throw new Exception("Punishment type is not registered");
-        if(!clazz.accept(object)) throw new Exception("Punishment is not valid");
+        clazz.accept(object);
         return clazz;
     }
 }

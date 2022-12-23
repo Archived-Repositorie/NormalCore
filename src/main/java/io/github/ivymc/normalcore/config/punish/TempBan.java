@@ -6,8 +6,8 @@ import net.minecraft.text.Text;
 
 public class TempBan extends MessageUpdating {
     @Override
-    public boolean accept(JsonObject json) {
-        return super.accept(json);
+    public void accept(JsonObject json) throws Exception {
+        super.accept(json);
     }
 
     @Override

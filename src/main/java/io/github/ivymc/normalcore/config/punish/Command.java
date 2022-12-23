@@ -10,11 +10,11 @@ import net.minecraft.text.Text;
 public class Command extends BaseClass {
     private String command;
     @Override
-    public boolean accept(JsonObject json) {
+    public void accept(JsonObject json) throws Exception {
         JsonElement command = json.get("command");
-        if(command == null) return false;
+        if(command == null) throw new Exception("command field is null");
         this.command = command.getAsString();
-        return super.accept(json);
+        super.accept(json);
     }
 
     @Override

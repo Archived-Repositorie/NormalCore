@@ -15,14 +15,14 @@ public abstract class Updating extends BaseClass {
     public int update;
 
     @Override
-    public boolean accept(JsonObject json) {
+    public void accept(JsonObject json) throws Exception {
         JsonElement time = json.get("time");
         JsonElement update = json.get("update");
-        if(time == null) return false;
-        if(update == null) return false;
+        if(time == null) throw new Exception("time field is null");
+        if(update == null) throw new Exception("update field is null");
         this.time = time.getAsInt();
         this.update = update.getAsInt();
-        return super.accept(json);
+        super.accept(json);
     }
 
     public abstract void review(ServerPlayerEntity player);
