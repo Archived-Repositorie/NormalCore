@@ -26,21 +26,22 @@ public class MessageUpdating extends Updating{
     }
 
     @Override
-    public boolean accept(JsonObject json) {
+    public void accept(JsonObject json) throws Exception {
         JsonElement update_message = json.get("update_message");
         JsonElement death_message = json.get("death_message");
         JsonElement review_message = json.get("review_message");
-        if(update_message == null) return false;
-        if(death_message == null) return false;
-        if(review_message == null) return false;
+        if(update_message == null) throw new Exception("update_message field is null");
+        if(death_message == null) throw new Exception("death_message field is null");
+        if(review_message == null) throw new Exception("review_message field is null");
         this.update_message = Message.parse(update_message.getAsJsonObject());
-        if (this.update_message == null) return false;
+        if (this.update_message == null) throw new Exception("update_message field is null");
         this.death_message = Message.parse(death_message.getAsJsonObject());
-        if (this.death_message == null) return false;
+        if (this.death_message == null) throw new Exception("death_message field is null");
         this.review_message = Message.parse(review_message.getAsJsonObject());
-        if (this.review_message == null) return false;
-        return super.accept(json);
+        if (this.review_message == null) throw new Exception("review_message field is null");
+        super.accept(json);
     }
+
 
     @Override
     public void review(ServerPlayerEntity player) {

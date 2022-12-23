@@ -15,7 +15,7 @@ group = project.maven_group
 
 repositories {
 	maven { url = "https://api.modrinth.com/maven" }
-	maven { url = 'https://maven-nucleoid.pb4.eu/' }
+	maven { url = 'https://maven.nucleoid.xyz/' }
 }
 
 dependencies {

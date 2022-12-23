@@ -30,7 +30,7 @@ public class PreMain implements PreLaunchEntrypoint {
         registry.add(RegistryTypes.PUNISHMENT, g.id("command"), new Command());
         registry.add(RegistryTypes.PUNISHMENT, g.id("random"), new Random());
         registry.add(RegistryTypes.PUNISHMENT, g.id("updating_command"), new UpdatingCommand());
-        registry.add(RegistryTypes.PUNISHMENT, g.id("tempbad"), new TempBan());
+        registry.add(RegistryTypes.PUNISHMENT, g.id("tempban"), new TempBan());
         registry.add(RegistryTypes.PUNISHMENT, g.id("spectator"), new Spectator());
     }
 

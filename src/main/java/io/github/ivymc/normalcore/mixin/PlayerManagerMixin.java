@@ -3,10 +3,9 @@ package io.github.ivymc.normalcore.mixin;
 import io.github.ivymc.normalcore.config.Configs;
 import io.github.ivymc.normalcore.config.punish.BaseClass;
 import io.github.ivymc.normalcore.helper.PlayerHelper;
-import io.github.ivymc.normalcore.interfacemixin.PlayerInterface;
+import io.github.ivymc.normalcore.interfacemixin.IEPlayer;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.stat.Stats;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -25,7 +24,7 @@ public class PlayerManagerMixin {
     public void death(CallbackInfoReturnable<ServerPlayerEntity> ci, BaseClass punishmentClass, ServerPlayerEntity player) {
         if (PlayerHelper.death(punishmentClass,player)) return;
         if(Configs.PUNISHMENT.data.cancel) {
-            ((PlayerInterface)player).setDeath(false);
+            ((IEPlayer)player).setDeath(false);
             player.setHealth(player.getMaxHealth());
             ci.cancel();
         }

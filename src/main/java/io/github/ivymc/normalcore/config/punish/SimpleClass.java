@@ -5,8 +5,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 public class SimpleClass extends BaseClass {
     @Override
-    public boolean accept(JsonObject json) {
-        return true;
+    public void accept(JsonObject json) {
     }
 
     @Override

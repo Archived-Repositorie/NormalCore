@@ -10,11 +10,11 @@ public class Spectator extends MessageUpdating {
 
 
     @Override
-    public boolean accept(JsonObject json) {
+    public void accept(JsonObject json) throws Exception {
         JsonElement semi = json.get("semi");
-        if(semi == null) return false;
+        if(semi == null) throw new Exception("semi field is null");
         this.semi = semi.getAsBoolean();
-        return super.accept(json);
+        super.accept(json);
     }
 
     @Override

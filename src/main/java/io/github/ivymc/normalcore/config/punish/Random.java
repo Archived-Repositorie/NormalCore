@@ -5,6 +5,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.CommandOutput;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.text.Text;
 
 public class Random extends BaseClass {
@@ -12,23 +13,33 @@ public class Random extends BaseClass {
     private int spreadDistance;
     private int max;
     private boolean setspawnpoint;
+    private boolean bedfixed;
+
     @Override
-    public boolean accept(JsonObject json) {
+    public void accept(JsonObject json) throws Exception {
         var spreadDistance = json.get("spreadDistance");
         var max = json.get("max");
         var setspawnpoint = json.get("setspawnpoint");
-        if(spreadDistance == null) return false;
-        if(max == null) return false;
-        if(setspawnpoint == null) return false;
+        var bedfixed = json.get("bedfixed");
+        if(spreadDistance == null) throw new Exception("spreadDistance field is null");
+        if(max == null) throw new Exception("max field is null");
+        if(setspawnpoint == null) throw new Exception("setspawnpoint field is null");
         this.spreadDistance = spreadDistance.getAsInt();
         this.max = max.getAsInt();
         this.setspawnpoint = setspawnpoint.getAsBoolean();
-        return super.accept(json);
+        this.bedfixed = bedfixed.getAsBoolean();
+        super.accept(json);
     }
 
     @Override
     public void onDeath(ServerPlayerEntity player) {
 //        var collection = new ArrayList<ServerPlayerEntity>();
+        if(bedfixed) {
+            var playerRespawnPoint = player.getSpawnPointPosition();
+            if(player.getWorld().getBlockState(playerRespawnPoint).isIn(BlockTags.BEDS)) {
+                return;
+            }
+        }
         try {
             spread(player.getServer(), spreadDistance, max, player);
         } catch (Exception err) {

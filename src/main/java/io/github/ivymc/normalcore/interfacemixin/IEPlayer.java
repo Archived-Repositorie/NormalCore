@@ -1,5 +1,5 @@
 package io.github.ivymc.normalcore.interfacemixin;
 
-public interface PlayerInterface {
+public interface IEPlayer {
     public void setDeath(boolean bl);
 }
